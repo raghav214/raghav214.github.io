@@ -108,8 +108,8 @@ loadDistrict(stateId,sid);
 
                               if(found){
 //                              new Notification("Available At:", {body: foundName});
-navigator.serviceWorker.ready.then(function(registration) {
-      registration.showNotification("Available At:", {body: foundName});
+        navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification("Available At:", {body: foundName});
     });
                               }
                          return data
@@ -166,7 +166,17 @@ navigator.serviceWorker.ready.then(function(registration) {
 
 		/* JS comes here */
 askForApproval();
-navigator.serviceWorker.register('sw.js');
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
 
 function askForApproval() {
 if(Notification.permission === "granted") {

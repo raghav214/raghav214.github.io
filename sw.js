@@ -1,13 +1,17 @@
-
+/*
+ *
+ *
+ *
+ */
 
 const version = "0.6.18";
-const cacheName = `raghav-${version}`;
+const cacheName = 'raghav-${version}';
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        `/`,
-        `/index.html`
+        '/',
+        '/index.html'
       ])
           .then(() => self.skipWaiting());
     })
