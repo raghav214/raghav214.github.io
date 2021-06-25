@@ -154,7 +154,10 @@ loadDistrict(stateId,sid);
 
 
     $("#test").on("click",function(){
-    setInterval (function (){
+    var intervalID=setInterval (function (){
+    if (count === 100) {
+           window.clearInterval(intervalID);
+       }
                 count = count+1;
                 table.ajax.url("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id="+sid+"&date="+sdate);
                 table.ajax.reload(null, false);
