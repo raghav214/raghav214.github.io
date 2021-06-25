@@ -6,7 +6,7 @@ var sage=18;
 var feeT='Free';
 var sid=363;
 var stateId=21;
-var retry = 30000;
+var retry = 40000;
 var sent=[]
 //milliseconds
 $(document).ready(function() {
@@ -107,7 +107,10 @@ loadDistrict(stateId,sid);
 
 
                               if(found){
-                              // new Notification("Available At:", {body: foundName});
+//                              new Notification("Available At:", {body: foundName});
+navigator.serviceWorker.ready.then(function(registration) {
+      registration.showNotification("Available At:", {body: foundName});
+    });
                               }
                          return data
                      }
@@ -163,13 +166,14 @@ loadDistrict(stateId,sid);
 
 		/* JS comes here */
 askForApproval();
+navigator.serviceWorker.register('sw.js');
 
 function askForApproval() {
-   //   if(Notification.permission === "granted") {
-//    }
-//     else {
-//      Notification.requestPermission();
-//      }
+if(Notification.permission === "granted") {
+    }
+     else {
+      Notification.requestPermission();
+      }
 }
 
 function formatDate(date) {
