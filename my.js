@@ -107,7 +107,7 @@ loadDistrict(stateId,sid);
 
 
                               if(found){
-                              new Notification("Available At:", {body: foundName});
+                              // new Notification("Available At:", {body: foundName});
                               }
                          return data
                      }
@@ -165,11 +165,11 @@ loadDistrict(stateId,sid);
 askForApproval();
 
 function askForApproval() {
-   if(Notification.permission === "granted") {
-    }
-     else {
-      Notification.requestPermission();
-      }
+   //   if(Notification.permission === "granted") {
+//    }
+//     else {
+//      Notification.requestPermission();
+//      }
 }
 
 function formatDate(date) {
